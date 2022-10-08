@@ -22,10 +22,10 @@ export const Contact = ({ name, isFavorite }: ContactProps) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 py: 1,
-                pl: 1,
+                pl: '6px',
             }}
         >
-            <Typography fontSize={24}>{name}</Typography>
+            <Typography fontSize={20}>{name}</Typography>
             <Box
                 sx={{
                     display: 'flex',

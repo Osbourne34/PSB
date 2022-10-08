@@ -12,6 +12,7 @@ export const Contacts = () => {
                 onClick={() => setActive(0)}
                 variant="text"
                 color={active === 0 ? 'info' : 'inherit'}
+                sx={{ fontSize: '20px' }}
             >
                 Избранное
             </Button>
@@ -19,6 +20,7 @@ export const Contacts = () => {
                 onClick={() => setActive(1)}
                 variant="text"
                 color={active === 1 ? 'info' : 'inherit'}
+                sx={{ fontSize: '20px' }}
             >
                 Контакты
             </Button>
