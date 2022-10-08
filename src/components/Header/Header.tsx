@@ -24,7 +24,7 @@ export const Header = ({ title }: HeaderProps) => {
                         style={{ width: '205px', height: '63px' }}
                     />
                 </Box>
-                <Typography variant="h5" color="white" sx={{ pt: 6 }}>
+                <Typography variant="h5" color="white" sx={{ pt: 12 }}>
                     {title}
                 </Typography>
             </Container>

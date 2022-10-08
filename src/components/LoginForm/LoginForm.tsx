@@ -29,7 +29,7 @@ export const LoginForm = () => {
         dispatch(login(data))
             .unwrap()
             .then(() => {
-                navigate('/messengers');
+                navigate('/messengers', { replace: true });
             });
     };
 
