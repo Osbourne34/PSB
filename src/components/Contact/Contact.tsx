@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import StarIcon from '@mui/icons-material/Star';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import EditIcon from '@mui/icons-material/Edit';
 
 interface ContactProps {
@@ -22,9 +22,10 @@ export const Contact = ({ name, isFavorite }: ContactProps) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 py: 1,
+                pl: 1,
             }}
         >
-            <Typography>{name}</Typography>
+            <Typography fontSize={24}>{name}</Typography>
             <Box
                 sx={{
                     display: 'flex',
@@ -33,7 +34,7 @@ export const Contact = ({ name, isFavorite }: ContactProps) => {
                 }}
             >
                 <IconButton size="large">
-                    <StarIcon
+                    <StarRateRoundedIcon
                         sx={{
                             color: isFavorite ? yellow[400] : '',
                             fontSize: 'inherit',
