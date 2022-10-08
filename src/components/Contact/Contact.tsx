@@ -33,16 +33,16 @@ export const Contact = ({ name, isFavorite }: ContactProps) => {
                     alignItems: 'center',
                 }}
             >
-                <IconButton size="large">
+                <IconButton size="small">
                     <StarRateRoundedIcon
                         sx={{
                             color: isFavorite ? yellow[400] : '',
-                            fontSize: 'inherit',
+                            fontSize: '40px',
                         }}
                     />
                 </IconButton>
-                <IconButton size="large">
-                    <EditIcon sx={{ fontSize: 'inherit' }} />
+                <IconButton size="medium">
+                    <EditIcon sx={{ fontSize: '34px' }} />
                 </IconButton>
             </Box>
         </Box>
