@@ -22,7 +22,7 @@ export const Contact = ({ name, isFavorite }: ContactProps) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 py: 1,
-                pl: '6px',
+                pl: '8px',
             }}
         >
             <Typography fontSize={20}>{name}</Typography>

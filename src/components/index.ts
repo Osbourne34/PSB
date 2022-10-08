@@ -6,3 +6,4 @@ export * from './PhoneSearchField/PhoneSearchField';
 export * from './Contacts/Contacts';
 export * from './Contact/Contact';
 export * from './ContactList/ContactList';
+export * from './Loader/Loader';

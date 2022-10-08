@@ -1,1 +1,1 @@
-export const API_URL = 'https://psb-transfer-app.herokuapp.com/api/v1/user';
+export const API_URL = 'https://psb-transfer-app.herokuapp.com/api/v1/';

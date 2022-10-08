@@ -28,7 +28,8 @@ export const LoginForm = () => {
     ) => {
         dispatch(login(data))
             .unwrap()
-            .then(() => {
+            .then(({ access }) => {
+                localStorage.setItem('accessToken', access);
                 navigate('/messengers', { replace: true });
             });
     };
