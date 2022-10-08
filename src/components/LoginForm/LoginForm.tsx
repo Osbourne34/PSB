@@ -93,6 +93,7 @@ export const LoginForm = () => {
                 variant="contained"
                 size="large"
                 fullWidth
+                color="warning"
                 sx={{ mt: 1 }}
             >
                 Войти
