@@ -20,7 +20,7 @@ export const Search = () => {
             </Container>
             <Container
                 sx={{
-                    height: 'calc(100vh - 396px)',
+                    height: 'calc(100vh - 406px)',
                     bgcolor: 'grey.100',
                     overflow: 'auto',
                 }}
