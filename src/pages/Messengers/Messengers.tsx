@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link as RouterLink } from 'react-router-dom';
+
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
@@ -50,6 +52,8 @@ export const Messengers = () => {
                     <Typography>WhatsApp</Typography>
                 </Link>
                 <Button
+                    component={RouterLink}
+                    to="/search"
                     variant="contained"
                     color="warning"
                     fullWidth

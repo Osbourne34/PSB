@@ -12,7 +12,7 @@ type AuthState = {
 };
 
 const initialState: AuthState = {
-    isAuth: false,
+    isAuth: true,
     loading: false,
     error: false,
 };
@@ -27,7 +27,7 @@ export const login = createAsyncThunk<authResponse, loginFormFields>(
             const error = err as AxiosError;
             return rejectWithValue(error.response?.data);
         }
-    }
+    },
 );
 
 const authSlice = createSlice({

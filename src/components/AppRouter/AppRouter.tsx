@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Login, Messengers } from '../../pages';
+import { Login, Messengers, Search } from '../../pages';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 
 export const AppRouter = () => {
@@ -13,6 +13,14 @@ export const AppRouter = () => {
                 element={
                     <ProtectedRoute>
                         <Messengers />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="search"
+                element={
+                    <ProtectedRoute>
+                        <Search />
                     </ProtectedRoute>
                 }
             />
