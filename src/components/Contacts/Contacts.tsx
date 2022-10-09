@@ -13,7 +13,7 @@ export const Contacts = () => {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
             <Button
-                onClick={() => dispatch(setFavorite())}
+                onClick={() => dispatch(setFavorite(true))}
                 variant="text"
                 color={isFavorite ? 'info' : 'inherit'}
                 sx={{ fontSize: '20px' }}
@@ -21,7 +21,7 @@ export const Contacts = () => {
                 Избранное
             </Button>
             <Button
-                onClick={() => dispatch(setFavorite())}
+                onClick={() => dispatch(setFavorite(false))}
                 variant="text"
                 color={!isFavorite ? 'info' : 'inherit'}
                 sx={{ fontSize: '20px' }}

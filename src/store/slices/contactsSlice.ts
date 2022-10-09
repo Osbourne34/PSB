@@ -46,8 +46,8 @@ const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
     reducers: {
-        setFavorite(state) {
-            state.isFavorite = !state.isFavorite;
+        setFavorite(state, action) {
+            state.isFavorite = action.payload;
         },
         setSearchValue(state, action) {
             state.searchValue = action.payload;
