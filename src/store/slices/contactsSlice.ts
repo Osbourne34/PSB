@@ -6,6 +6,7 @@ import { AxiosError } from 'axios';
 
 type ContactsState = {
     contacts: contact[];
+    foundContact: contact[];
     isFavorite: boolean;
     searchValue: string;
     loading: boolean;
@@ -14,6 +15,7 @@ type ContactsState = {
 
 const initialState: ContactsState = {
     contacts: [],
+    foundContact: [],
     isFavorite: true,
     searchValue: '+7',
     loading: false,
@@ -42,6 +44,21 @@ export const getContacts = createAsyncThunk<
     },
 );
 
+export const getOtherClients = createAsyncThunk<contact[], string>(
+    'contacts/getOtherClients',
+    async (searchValue, { rejectWithValue }) => {
+        try {
+            const response = await $api.get(
+                `/get_fake_client/?search=${searchValue}`,
+            );
+            return response.data;
+        } catch (err) {
+            const error = err as AxiosError;
+            return rejectWithValue(error.response?.data);
+        }
+    },
+);
+
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
@@ -56,6 +73,7 @@ const contactsSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getContacts.pending, (state) => {
             state.contacts = [];
+            state.foundContact = [];
             state.error = false;
             state.loading = true;
         });
@@ -63,8 +81,26 @@ const contactsSlice = createSlice({
             state.loading = false;
             state.error = false;
             state.contacts = action.payload;
+            state.foundContact = [];
         });
         builder.addCase(getContacts.rejected, (state) => {
+            state.loading = false;
+            state.error = true;
+        });
+
+        builder.addCase(getOtherClients.pending, (state, action) => {
+            state.loading = true;
+            state.error = false;
+            state.contacts = [];
+            state.foundContact = [];
+        });
+        builder.addCase(getOtherClients.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = false;
+            state.foundContact = action.payload;
+            state.contacts = [];
+        });
+        builder.addCase(getOtherClients.rejected, (state, action) => {
             state.loading = false;
             state.error = true;
         });

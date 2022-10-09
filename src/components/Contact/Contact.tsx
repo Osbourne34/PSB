@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from 'react-router-dom';
 
 interface ContactProps {
     name: string;
@@ -15,8 +16,11 @@ interface ContactProps {
 }
 
 export const Contact = ({ name, isFavorite }: ContactProps) => {
+    const navigate = useNavigate();
+
     return (
         <Box
+            onClick={() => navigate('/payment')}
             sx={{
                 display: 'flex',
                 justifyContent: 'space-between',

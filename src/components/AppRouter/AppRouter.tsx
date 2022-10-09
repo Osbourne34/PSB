@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Login, Messengers, Search } from '../../pages';
-import { Contact } from '../Contact/Contact';
+import { Payment } from '../../pages/Payment/Payment';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 
 export const AppRouter = () => {
@@ -22,6 +22,14 @@ export const AppRouter = () => {
                 element={
                     <ProtectedRoute>
                         <Search />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="payment"
+                element={
+                    <ProtectedRoute>
+                        <Payment />
                     </ProtectedRoute>
                 }
             />
