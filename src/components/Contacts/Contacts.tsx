@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { contacts, setFavorite } from '../../store/slices/contactsSlice';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 export const Contacts = () => {
-    const [active, setActive] = useState<number>(0);
+    const dispatch = useAppDispatch();
+    const { isFavorite } = useAppSelector(contacts);
 
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
             <Button
-                onClick={() => setActive(0)}
+                onClick={() => dispatch(setFavorite())}
                 variant="text"
-                color={active === 0 ? 'info' : 'inherit'}
+                color={isFavorite ? 'info' : 'inherit'}
                 sx={{ fontSize: '20px' }}
             >
                 Избранное
             </Button>
             <Button
-                onClick={() => setActive(1)}
+                onClick={() => dispatch(setFavorite())}
                 variant="text"
-                color={active === 1 ? 'info' : 'inherit'}
+                color={!isFavorite ? 'info' : 'inherit'}
                 sx={{ fontSize: '20px' }}
             >
                 Контакты

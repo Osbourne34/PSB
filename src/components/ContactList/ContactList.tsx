@@ -12,11 +12,12 @@ import { Loader, Contact } from '../../components';
 
 export const ContactList = () => {
     const dispatch = useAppDispatch();
-    const { contacts, loading, error } = useAppSelector(contactsSelector);
+    const { contacts, isFavorite, searchValue, loading, error } =
+        useAppSelector(contactsSelector);
 
     useEffect(() => {
-        dispatch(getContacts());
-    }, [dispatch]);
+        dispatch(getContacts({ isFavorite, searchValue }));
+    }, [dispatch, isFavorite, searchValue]);
 
     return (
         <>
@@ -31,6 +32,11 @@ export const ContactList = () => {
                     />
                 );
             })}
+            {!loading && contacts.length < 1 && (
+                <Typography variant="h5" sx={{ mt: 2 }}>
+                    Пользователь не найден
+                </Typography>
+            )}
         </>
     );
 };

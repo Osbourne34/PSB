@@ -6,21 +6,34 @@ import { AxiosError } from 'axios';
 
 type ContactsState = {
     contacts: contact[];
+    isFavorite: boolean;
+    searchValue: string;
     loading: boolean;
     error: boolean;
 };
 
 const initialState: ContactsState = {
     contacts: [],
+    isFavorite: true,
+    searchValue: '+7',
     loading: false,
     error: false,
 };
 
-export const getContacts = createAsyncThunk<contact[], undefined>(
+export const getContacts = createAsyncThunk<
+    contact[],
+    { isFavorite: boolean; searchValue: string }
+>(
     'contacts/getContacts',
-    async (_, { rejectWithValue }) => {
+    async ({ isFavorite, searchValue }, { rejectWithValue }) => {
         try {
-            const response = await $api.get('contacts/');
+            const response = await $api.get(
+                `contacts/${
+                    isFavorite
+                        ? '?ordering=-is_favorite'
+                        : '?ordering=is_favorite'
+                }&search=${searchValue}`,
+            );
             return response.data;
         } catch (err) {
             const error = err as AxiosError;
@@ -32,7 +45,14 @@ export const getContacts = createAsyncThunk<contact[], undefined>(
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
-    reducers: {},
+    reducers: {
+        setFavorite(state) {
+            state.isFavorite = !state.isFavorite;
+        },
+        setSearchValue(state, action) {
+            state.searchValue = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(getContacts.pending, (state) => {
             state.contacts = [];
@@ -53,6 +73,6 @@ const contactsSlice = createSlice({
 
 export const contacts = (state: RootState) => state.contacts;
 
-export const {} = contactsSlice.actions;
+export const { setFavorite, setSearchValue } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
